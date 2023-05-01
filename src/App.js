@@ -1,25 +1,19 @@
 import "./App.css";
-import { useContext, useEffect } from "react";
-import { AppContext } from "./context/AppContext";
 import Header from "./components/Header";
 import Blogs from "./components/Blogs";
 import Pagination from "./components/Pagination";
+import { useContext, useEffect } from "react";
+import { AppContext } from "./context/AppContext";
 export default function App() {
   const { fetchBlogPosts } = useContext(AppContext);
-
   useEffect(() => {
-    // Fetch the inital Blogposts data
     fetchBlogPosts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
-    <>
+    <main className="flex flex-col w-full h-full gap-1 justify-center items-center">
       <Header />
-      <div className="my-[100px]">
-        <Blogs />
-        <Pagination />
-      </div>
-    </>
+      <Blogs />
+      <Pagination />
+    </main>
   );
 }

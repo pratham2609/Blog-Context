@@ -1,48 +1,43 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 import { baseUrl } from "../baseUrl";
-
+//step1: create context
 export const AppContext = createContext();
-
+//step2: create provider
 export default function AppContextProvider({ children }) {
-  const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(null);
-
-  // Fetch Blog Data
-  const fetchBlogPosts = async (page = 1) => {
+  const [totalPages, setTotalPages] = useState(0);
+  //step3: data filling in value
+  async function fetchBlogPosts(page = 1) {
     setLoading(true);
     let url = `${baseUrl}?page=${page}`;
     try {
-      const res = await fetch(url);
-      const data = await res.json();
-      if (!data.posts || data.posts.length === 0)
-        throw new Error("Something Went Wrong");
-      console.log("Api Response", data);
-      setPage(data.page);
-      setPosts(data.posts);
-      setTotalPages(data.totalPages);
+      const response = await fetch(url);
+      const result = await response.json();
+      setPosts(result.posts);
+      setPage(result.page);
+      setTotalPages(result.totalPages);
     } catch (error) {
-      console.log("Error in Fetching BlogPosts", error);
+      console.log("error in fetching data");
       setPage(1);
-      setPosts([]);
       setTotalPages(null);
+      setPosts([]);
     }
     setLoading(false);
-  };
+  }
 
-  // Handle When Next and Previous button are clicked
-  const handlePageChange = (page) => {
+  function handlePageChange(page) {
     setPage(page);
-    console.log(page);
     fetchBlogPosts(page);
-  };
+  }
 
+  // step4: create value
   const value = {
-    posts,
-    setPosts,
     loading,
     setLoading,
+    posts,
+    setPosts,
     page,
     setPage,
     totalPages,
@@ -50,6 +45,5 @@ export default function AppContextProvider({ children }) {
     fetchBlogPosts,
     handlePageChange,
   };
-
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
