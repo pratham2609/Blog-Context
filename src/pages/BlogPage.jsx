@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
-import Header from '../components/Header';
 import BlogDetails from '../components/BlogDetails';
+import BlogLayout from '../components/BlogLayout';
 
 export default function BlogPage() {
   const newBaseUrl = "https://codehelp-apis.vercel.app/api/";
@@ -35,17 +35,13 @@ export default function BlogPage() {
 
   }, [location.pathname]);
   return (
-    <div>
-      <Header />
-      <div className='flex justify-center'>
-      <div className='w-11/12 min-h-screen max-w-[670px] flex flex-col gap-5 mt-20 mb-10'>
-        <div>
-          <button className='rounded-md border-2 px-4 py-1' onClick={() => navigation(-1)}>
-            Back
-          </button>
-        </div>
+    <BlogLayout>
+      <div className='w-11/12 h-full max-w-[670px] flex flex-col justify-start gap-5'>
+        <button className='rounded-md border-2 px-4 w-min py-1' onClick={() => navigation(-1)}>
+          Back
+        </button>
         {
-          loading ? (<div>Loading...</div>) :
+          loading ? (<div>Loading Your Blog!...</div>) :
             blog ? (<div className='flex flex-col gap-5'>
               <BlogDetails post={blog} />
               <h2 className='font-bold text-2xl'>Related Blogs</h2>
@@ -57,7 +53,6 @@ export default function BlogPage() {
             </div>) : (<p>No blog found</p>)
         }
       </div>
-      </div>
-    </div>
+    </BlogLayout>
   )
 }

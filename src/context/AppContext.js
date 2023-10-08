@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import { baseUrl } from "../baseUrl";
+import { baseUrl } from "../utils/baseUrl";
 import { useNavigate } from "react-router-dom";
 //step1: create context
 export const AppContext = createContext();
