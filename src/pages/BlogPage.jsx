@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import BlogDetails from '../components/BlogDetails';
-import BlogLayout from '../components/BlogLayout';
+import BlogLayout from '../components/layout/BlogLayout';
 
 export default function BlogPage() {
   const newBaseUrl = "https://codehelp-apis.vercel.app/api/";

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import Blogs from '../components/Blogs';
-import BlogLayout from '../components/BlogLayout';
+import BlogLayout from '../components/layout/BlogLayout';
 
 export default function CategoryPage() {
   const navigation = useNavigate();
