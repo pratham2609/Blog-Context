@@ -1,7 +1,4 @@
-import React from 'react'
+import Form from '../components/Form'
 
-export default function AddBlogs() {
-  return (
-    <div>AddBlogs</div>
-  )
-}
+const AddBlogs = Form
+export default AddBlogs

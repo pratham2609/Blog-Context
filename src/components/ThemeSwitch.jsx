@@ -5,7 +5,7 @@ import { IoMdSunny } from 'react-icons/io'
 export default function ThemeSwitch() {
     const { theme, toggleTheme } = React.useContext(ThemeContext);
     return (
-        <div className='w-full h-full flex items-center '>
+        <div className=' h-full flex items-center '>
             <button onClick={toggleTheme} className=" peer flex items-center gap-2 h-full z-50">
                 <div className=' w-max'>
                     {theme ? <IoMdSunny className="text-2xl text-blue-950 cursor-pointer" /> : <BsMoonStarsFill className="text-2xl text-white cursor-pointer" />}

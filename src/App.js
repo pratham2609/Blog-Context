@@ -8,6 +8,7 @@ import TagPage from "./pages/TagPage";
 import CategoryPage from "./pages/CategoryPage";
 import Home from "./pages/Home";
 import AddBlogs from "./pages/AddBlogs";
+import YourBlogs from "./components/yourBlogs";
 
 export default function App() {
   const { fetchBlogPosts } = useContext(AppContext);
@@ -34,6 +35,7 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="/allBlogs" element={<AllBlogs />} />
       <Route path="/addBlog" element={<AddBlogs />} />
+      <Route path="/yourBlog" element={<YourBlogs />} />
       <Route path="/blog/:blogId" element={<BlogPage />} />
       <Route path="/tags/:tag" element={<TagPage />} />
       <Route path="/categories/:category" element={<CategoryPage />} />

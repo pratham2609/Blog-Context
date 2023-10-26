@@ -12,20 +12,25 @@ export default function Nav() {
             </NavbarBrand>
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
                 <NavbarItem>
+                    <Link href="/" className={"line " + (theme ? "text-black black" : "text-white white")}>
+                        Home
+                    </Link>
+                </NavbarItem>
+                <NavbarItem>
                     <Link href="/allBlogs" className={"line " + (theme ? "text-black black" : "text-white white")}>
                         All Blogs
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Link href="#" className={"line " + (theme ? "text-black black" : "text-white white")}>
+                    <Link href="/addBlog" className={"line " + (theme ? "text-black black" : "text-white white")}>
                         Add a Blog
                     </Link>
                 </NavbarItem>
-                {/* <NavbarItem>
-                    <Link href="#" className={"line " + (theme ? "text-black black" : "text-white white")}>
-                        Review
+                <NavbarItem>
+                    <Link href="/yourBlog" className={"line " + (theme ? "text-black black" : "text-white white")}>
+                        Your Blogs
                     </Link>
-                </NavbarItem> */}
+                </NavbarItem>
             </NavbarContent>
             <NavbarContent justify="end">
                 <NavbarItem className="">
