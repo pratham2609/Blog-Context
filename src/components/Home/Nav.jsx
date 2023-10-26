@@ -6,26 +6,26 @@ import ThemeSwitch from "../ThemeSwitch";
 export default function Nav() {
     const { theme } = React.useContext(ThemeContext)
     return (
-        <Navbar shouldHideOnScroll className={"px-[200px] " + (theme ? "" : 'text-white grad')}>
+        <Navbar shouldHideOnScroll className={"px-[200px] absolute " + (theme ? "" : 'text-white grad')}>
             <NavbarBrand>
-                <p className="font-bold text-inherit">ACME</p>
+                <p className="font-bold text-inherit text-2xl ">The Blogger</p>
             </NavbarBrand>
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
                 <NavbarItem>
-                    <Link className={theme ? "text-black" : "text-white"} href="/allBlogs">
+                    <Link href="/allBlogs" className={"line " + (theme ? "text-black black" : "text-white white")}>
                         All Blogs
                     </Link>
                 </NavbarItem>
-                <NavbarItem isActive>
-                    <Link href="#" className={theme ? "text-black" : "text-white"}>
+                <NavbarItem>
+                    <Link href="#" className={"line " + (theme ? "text-black black" : "text-white white")}>
                         Add a Blog
                     </Link>
                 </NavbarItem>
-                <NavbarItem>
-                    <Link className={theme ? "text-black" : "text-white"} href="#">
+                {/* <NavbarItem>
+                    <Link href="#" className={"line " + (theme ? "text-black black" : "text-white white")}>
                         Review
                     </Link>
-                </NavbarItem>
+                </NavbarItem> */}
             </NavbarContent>
             <NavbarContent justify="end">
                 <NavbarItem className="">

@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { ThemeContext } from '../context/ThemeContext'
 
 const BlogDetails = ({ post }) => {
+    const { theme } = useContext(ThemeContext)
     return (
         <div className=''>
             <NavLink to={`/blog/${post.id}`} >
@@ -20,7 +22,7 @@ const BlogDetails = ({ post }) => {
             <div className='flex gap-2'>
                 {post.tags.map((tag, index) => (
                     <NavLink key={index} to={`/tags/${tag.replaceAll(" ", "-")}`}>
-                        <span className='text-xs underline font-bold text-gray-700'>{`#${tag}`}</span>
+                        <span className={'text-xs underline font-bold ' + (theme ? "text-gray-700" : "text-gray-400")}>{`#${tag}`}</span>
                     </NavLink>
                 ))}
             </div>
